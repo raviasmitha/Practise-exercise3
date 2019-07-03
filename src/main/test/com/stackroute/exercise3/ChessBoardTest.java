@@ -6,11 +6,11 @@ import org.junit.*;
 
 public class ChessBoardTest {
 
-  ChessBoard cb;
+  ChessBoard chessBoard;
 
   @Before
   public void setUp() throws Exception {
-    cb = new ChessBoard();
+    chessBoard = new ChessBoard();
   }
 
   @After
@@ -18,10 +18,28 @@ public class ChessBoardTest {
   }
 
   @Test
-  public void Testcheck() {
+  public void testCheck() {
     String expected[][]={{"WW","BB","WW","BB","WW","BB","WW","BB"},{"BB","WW","BB","WW","BB","WW","BB","WW"},{"WW","BB","WW","BB","WW","BB","WW","BB"},{"BB","WW","BB","WW","BB","WW","BB","WW"},{"WW","BB","WW","BB","WW","BB","WW","BB"},{"BB","WW","BB","WW","BB","WW","BB","WW"},{"WW","BB","WW","BB","WW","BB","WW","BB"},{"BB","WW","BB","WW","BB","WW","BB","WW"}};
 
-    String [][] actual = cb.display(8,8);
+    String [][] actual = chessBoard.display(8,8);
+
+    assertArrayEquals("Following is chessPattern output",expected,actual);
+  }
+
+  @Test
+  public void testCheckForFour() {
+    String expected[][]={{"WW","BB","WW","BB"},{"BB","WW","BB","WW"},{"WW","BB","WW","BB"},{"BB","WW","BB","WW"}};
+
+    String [][] actual = chessBoard.display(4,4);
+
+    assertArrayEquals("Following is chessPattern output",expected,actual);
+  }
+
+  @Test
+  public void testCheckForTwo() {
+    String expected[][]={{"WW","BB"},{"BB","WW"}};
+
+    String [][] actual = chessBoard.display(2,2);
 
     assertArrayEquals("Following is chessPattern output",expected,actual);
   }
